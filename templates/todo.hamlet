@@ -1,0 +1,15 @@
+<h1>世界の言語で挨拶します
+ 
+<h2>出会いの挨拶
+<ul>
+    <li class="english">Hello
+    <li class="chinese">ニーハオ
+    <li class="hindi">ナマステ
+    <li class="japanese">こんにちは
+ 
+<h2>別れの挨拶
+<ul>
+    <li class="english">Goodbye
+    <li class="chinese">再見
+    <li class="hindi">ナマステ
+    <li class="japanese">さようなら
