@@ -6,4 +6,6 @@
 /robots.txt RobotsR GET
 
 / HomeR GET POST
-/api/todos TodoR GET
+
+/api/todos TodosR GET POST
+/api/todos/#Int TodoR GET PUT DELETE
