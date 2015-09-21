@@ -18,3 +18,10 @@ instance ToJSON (Entity Todo) where
     , "status" .= todoStatus t
     , "title"  .= todoTitle t
     ]
+
+instance FromJSON Todo where
+  parseJSON (Object o) = Todo
+    <$> o .: "status"
+    <*> o .: "title"
+
+  parseJSON _          = mzero

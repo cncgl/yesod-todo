@@ -8,4 +8,4 @@
 / HomeR GET POST
 
 /api/todos TodosR GET POST
-/api/todos/#Int TodoR GET PUT PATCH DELETE
+/api/todos/#TodoId TodoR GET PUT PATCH DELETE

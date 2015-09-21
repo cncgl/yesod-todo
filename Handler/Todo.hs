@@ -11,19 +11,26 @@ getTodosR = do
 
 -- Create
 postTodosR :: Handler ()
-postTodosR = error "create"
+postTodosR = do
+  todo <- requireJsonBody :: Handler Todo
+  _    <- runDB $ insert todo
+
+  sendResponseStatus status201 ("CREATED" :: Text )
 
 -- Show
-getTodoR :: Int -> Handler Value
-getTodoR = error "show"
+getTodoR :: TodoId -> Handler Value
+getTodoR tid = do
+  todo <- runDB $ get404 tid
+
+  return $ object ["todo" .= (Entity tid todo)]
 
 -- Update
-putTodoR :: Int -> Handler Value
+putTodoR :: TodoId -> Handler Value
 putTodoR = error "update"
 
-patchTodoR :: Int -> Handler Value
+patchTodoR :: TodoId -> Handler Value
 patchTodoR = error "update"
 
 -- Delete
-deleteTodoR :: Int -> Handler Value
+deleteTodoR :: TodoId -> Handler Value
 deleteTodoR = error "delete"
