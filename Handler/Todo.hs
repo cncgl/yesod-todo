@@ -25,12 +25,22 @@ getTodoR tid = do
   return $ object ["todo" .= (Entity tid todo)]
 
 -- Update
+update :: TodoId -> Handler Value
+update tid = do
+  todo <- requireJsonBody :: Handler Todo
+  runDB $ replace tid todo
+
+  sendResponseStatus status200 ("UPDATED" :: Text)
+
 putTodoR :: TodoId -> Handler Value
-putTodoR = error "update"
+putTodoR tid = Handler.Todo.update tid
 
 patchTodoR :: TodoId -> Handler Value
-patchTodoR = error "update"
+patchTodoR tid = Handler.Todo.update tid
 
 -- Delete
 deleteTodoR :: TodoId -> Handler Value
-deleteTodoR = error "delete"
+deleteTodoR tid = do
+  runDB $ delete tid
+
+  sendResponseStatus status200 ("DELETED" :: Text)
